@@ -2,6 +2,10 @@ printf "\n\n========= Starting test run ==========\n\n"
 
 printf "===== Build test =====\n\n"
 make test
+
+makefile_res=$?
+echo $makefile_res
+
 printf "\n"
 
 tests=$(find ./test/compile/ -type f -name "*.out")
@@ -18,6 +22,12 @@ max=${#valgrind_args[@]}
 RED="\033[0;31m"
 NC="\033[0m"
 GREEN="\033[0;32m"
+
+EXIT_STATUS=0
+
+# 0 - No error
+# 1 - Test failed
+# 2 - Mem leak
 
 for e in $tests
 do
@@ -39,11 +49,13 @@ do
 
 		if (($VALGRIND_EXIT_CODE == 1)); #error found
 		then
+			EXIT_STATUS=2
 			echo -e "[${RED}X${NC}]  ${e} - ${RED}Valgrind detected memory leak${NC} ${TEST_COUNTER}"
 		else
 			echo -e "[${GREEN}Success${NC}] ${e} - ${GREEN}Valgrind detected no memory leaks${NC} ${TEST_COUNTER}"
 		fi
 	else
+		EXIT_STATUS=1
 		echo -e "[${RED}X${NC}] ${e} - ${RED}Test failed${NC} ${TEST_COUNTER}"
 		echo "Valgrind test for $e were not performed"
 		printf "\n"
@@ -51,3 +63,5 @@ do
 
 	counter=$(($counter + 1))
 done
+
+exit $EXIT_STATUS
