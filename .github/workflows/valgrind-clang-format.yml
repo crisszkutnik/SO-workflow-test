@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Perform tests
-        uses: crisszkutnik/SO-valgrind-action@v1.2
+        uses: crisszkutnik/SO-valgrind-action@v1
 
   build:
     runs-on: ubuntu-latest
