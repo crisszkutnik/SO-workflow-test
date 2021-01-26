@@ -4,6 +4,7 @@
 #include <time.h>
 
 int main() {
+  printf("Comienzo\n\n");
   clock_t begin = clock(); // tomemos el tiempo que tarda
 
   NumeroAstronomico *p1 =
