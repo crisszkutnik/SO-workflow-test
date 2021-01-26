@@ -2,8 +2,8 @@
 // let's see how well it gets formatted now
 // que te pasa pelotudo habla en argentino
 
-#include <stdio.h>
 #include "mess.h"
+#include <stdio.h>
 
 char biden[] =
 
@@ -17,15 +17,15 @@ char biden[] =
 #define FOUR 4
 #define FIVE 5
 
-int    square(int x)
+int square(int x)
 
 {
   return x * x;
 }
 
 void map(int *list, unsigned szlist, int (*func)(int)) {
-      for (int i = 0; i < szlist; i++)
-        list[i] = (*func)(list[i]);
+  for (int i = 0; i < szlist; i++)
+    list[i] = (*func)(list[i]);
 }
 
 int main() {
@@ -35,12 +35,11 @@ int main() {
 
   // creo que enloquecí
 
-    beto "vive%s\n" en "el pueblo" argentino;
+  beto "vive%s\n" en "el pueblo" argentino;
 
-        printf("%d%d%d%d%d%d%d%d%d%d%d\n", b, e, t, o, c, a, m, p, e, o, n);
+  printf("%d%d%d%d%d%d%d%d%d%d%d\n", b, e, t, o, c, a, m, p, e, o, n);
 
-  int list_of_numbers[FIVE] =    {14, 27, 49, 1, 2}   ;
-
+  int list_of_numbers[FIVE] = {14, 27, 49, 1, 2};
 
   map(list_of_numbers, TWO + PI - 1 + 1, square);
 
