@@ -1,15 +1,31 @@
-#define main main(scanff, tao){}Q
+#define main                                                                   \
+  main(scanff, tao) {}                                                         \
+  Q
 #define scanf printf(
 
-#																																																				pragma 																																																										once
+#pragma once
 #include "hi.c"
 
-main(a)int a;{{{{{{
-{{{
+main(a) int a;
+{
+  {
+    {
+      {
+        {
+          {
+            {
+              {
+                {
 #define tao "hi"
-}
-
-}}}
-	return scanf(tao)
+                }
+              }
+            }
+          }
+        return scanf(tao)
 #define tao is very cool wow omg so cool
-	);}}}}}
+	);
+        }
+      }
+    }
+  }
+}
