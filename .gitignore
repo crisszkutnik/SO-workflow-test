@@ -1,0 +1,12 @@
+compile
+compile/*
+headers/*.h.gch
+test/compile/*.o
+test/compile/*.log
+valgrind_logs
+valgrind_logs/*.log
+
+# Just in case
+
+*.o
+*.log
