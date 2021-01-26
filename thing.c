@@ -1,21 +1,22 @@
 #include <stdio.h>
 
-int main()      {
+int main() {
 
-	printf("ben\n");
+  printf("ben\n");
 
-	int a;
-	 int b;
+  int a;
+  int b;
 
-		int c;
-	 int d;
-			int e;
-	  int f;
+  int c;
+  int d;
+  int e;
+  int f;
 
-		int g;
-	 int h;
-	   int i;
+  int g;
+  int h;
+  int i;
 
-	   {}
+  {}
 
-	return      (0);}
+  return (0);
+}
