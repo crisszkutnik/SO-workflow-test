@@ -1,22 +1,9 @@
-/*
-        coded BY THE SPUTNIK V GANG
-
-        esto es lo que pasa cuando te vacuna el tio alberchas
-*/
+// rm all large comments, add some more disease
+// let's see how well it gets formatted now
+// que te pasa pelotudo habla en argentino
 
 #include <stdio.h>
-
-// 1984 //
-//    //
-// //
-//
-//////////////
-//          //
-/* hi there */
-//////////////
 #include "mess.h"
-//                     ^^^^^^^
-//                     ||   ||
 
 char biden[] =
 
@@ -24,38 +11,21 @@ char biden[] =
     ""
     "CHANNEL!!";
 
-/*
-
-        o -( Hi, I'm a happy sticc man! Just chillin on some #defines )
-        +
-        ^                                               */
 #define ONE 1
 #define TWO 2
 #define PI 3
 #define FOUR 4
 #define FIVE 5
 
-int square(int x)
-
-/*
-
-             -----
-             |   |
-             |   |
-             -----
-
-             there's your goddamn square
-
-
-*/
+int    square(int x)
 
 {
   return x * x;
 }
 
 void map(int *list, unsigned szlist, int (*func)(int)) {
-  for (int i = 0; i < szlist; i++)
-    list[i] = (*func)(list[i]);
+      for (int i = 0; i < szlist; i++)
+        list[i] = (*func)(list[i]);
 }
 
 int main() {
@@ -65,20 +35,12 @@ int main() {
 
   // creo que enloquecí
 
-  beto "vive%s\n" en "el pueblo" argentino;
+    beto "vive%s\n" en "el pueblo" argentino;
 
-  printf("%d%d%d%d%d%d%d%d%d%d%d\n", b, e, t, o, c, a, m, p, e, o, n);
+        printf("%d%d%d%d%d%d%d%d%d%d%d\n", b, e, t, o, c, a, m, p, e, o, n);
 
-  int list_of_numbers[FIVE] = {14, 27, 49, 1, 2};
+  int list_of_numbers[FIVE] =    {14, 27, 49, 1, 2}   ;
 
-  // ebola!!!
-
-  /*
-          WOW THIS IS VERY
-                       BAD CODE
-                       // COMMENT!!
-                       /* while */ /*
-	*/
 
   map(list_of_numbers, TWO + PI - 1 + 1, square);
 
