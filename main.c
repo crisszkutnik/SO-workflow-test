@@ -2,6 +2,6 @@
 #include <stdlib.h>
 
 int main() {
-	printf("\n\nThis is main\n\n");
-	return 0;
+  printf("\n\nThis is main\n\n");
+  return 0;
 }
