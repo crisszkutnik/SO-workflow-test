@@ -21,17 +21,32 @@ GREEN="\033[0;32m"
 
 for e in $tests
 do
-	log_name="$e-log.log"
-	valgrind $valgrind_args --log-file=$log_name $e
-	exit_code=$?
+	# first, run the test
 
 	TEST_COUNTER="($counter/$max)"
+	./$e
+	EXIT_CODE_1=$?
 
-	if (($exit_code == 1)); #error found
+	if (($EXIT_CODE_1 == 0));
 	then
-		echo -e "[${RED}X${NC}]  ${e} - ${RED}Test failed${NC} ${TEST_COUNTER}"
+		# now, run valgrind tests
+
+		echo -e "[${GREEN}Success${NC}] ${e} - ${GREEN}Test passed${NC} ${TEST_COUNTER}"
+
+		log_name="$e-log.log"
+		valgrind $valgrind_args --log-file=$log_name $e
+		VALGRIND_EXIT_CODE=$?
+
+		if (($VALGRIND_EXIT_CODE == 1)); #error found
+		then
+			echo -e "[${RED}X${NC}]  ${e} - ${RED}Valgrind detected memory leak${NC} ${TEST_COUNTER}"
+		else
+			echo -e "[${GREEN}Success${NC}] ${e} - ${GREEN}Valgrind detected no memory leaks${NC} ${TEST_COUNTER}"
+		fi
 	else
-		echo -e "[${GREEN}✔${NC}] ${e} - ${GREEN}Test passed${NC} ${TEST_COUNTER}"
+		echo -e "[${RED}X${NC}] ${e} - ${RED}Test failed${NC} ${TEST_COUNTER}"
+		echo "Valgrind test for $e were not performed"
+		printf "\n"
 	fi
 
 	counter=$(($counter + 1))
