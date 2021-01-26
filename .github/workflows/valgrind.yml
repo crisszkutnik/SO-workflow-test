@@ -1,0 +1,8 @@
+on: [push, pull_request]
+
+jobs:
+  run_valgrind:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Perform tests
+        uses: crisszkutnik/SO-valgrind-action@v1.0
