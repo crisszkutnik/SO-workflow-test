@@ -1,0 +1,15 @@
+AlignAfterOpenBracket: true
+# Llamadas a funciones con muchos argumentos por ej
+
+AlignTrailingComments: true
+# Alinea comentarios
+
+DerivePointerAlignment: false
+# No "adivinar" si se usa mas char* a o char *a
+
+IndentWidth: 4
+# 4 espacios
+
+PointerAlignment: Left
+# Siempre usar char* a
+...
