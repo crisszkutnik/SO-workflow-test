@@ -2,7 +2,7 @@ _HEADERS = func.h
 HEAD_DIR = ./headers
 HEADERS = $(patsubst %,$(HEAD_DIR)/%,$(_HEADERS))
 
-_OBJ = func.o
+_OBJ = func.o 
 ODIR = ./compile
 OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
 

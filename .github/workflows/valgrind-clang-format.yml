@@ -1,25 +1,8 @@
-name: Run valgrind and clang-formatter
+name: Run clang-formatter
 
 on: [push, pull_request]
 
 jobs:
-  #run_valgrind:
-  #  runs-on: ubuntu-latest
-  #  steps:
-  #    - name: Perform tests
-  #      uses: crisszkutnik/SO-valgrind-action@v1.2
-  run_tests:
-    runs-on: ubuntu-latest
-    
-    steps:
-      - uses: actions/checkout@v2
-      - name: Get repositories
-        run: sudo apt-get update
-      - name: Install valgrind
-        run: sudo apt-get install -y valgrind
-      - name: Run tests
-        run: bash run-test.sh
-
   build:
     runs-on: ubuntu-latest
 

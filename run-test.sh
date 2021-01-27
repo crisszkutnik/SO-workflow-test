@@ -1,4 +1,8 @@
+#!/usr/bin/bash
+
 printf "\n\n========= Starting test run ==========\n\n"
+
+ls
 
 printf "===== Build test =====\n\n"
 make test
