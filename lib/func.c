@@ -8,7 +8,8 @@ void doRandomStuff(int *num) {
   int *ptr = malloc(sizeof(int));
   *ptr = *num + 50;
   *num = *ptr - 10;
-  // This has a memory leak. Too bad!
+  free(ptr);
+  // Wow! I solved the memory leak!
 }
 
 void printSomething() { printf("Hello fellow reader"); }

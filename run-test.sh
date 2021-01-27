@@ -12,7 +12,12 @@ MAKEFILE_RES=$?
 # 4 error code is that it did not compile
 if (($MAKEFILE_RES != 0));
 then
-	wget "${GET_LINK}3" 
+	if [ ! -z "$1" ] && [ "$1" == "github" ];
+	then
+		wget --spider "${GET_LINK}&3"
+	fi
+
+	exit 3
 fi
 
 printf "\n"
@@ -32,6 +37,11 @@ EXIT_STATUS=0
 # 0 - No error
 # 1 - Test failed
 # 2 - Mem leak
+
+declare -a MEM_LEAK
+declare -a TEST_ERROR
+
+printf "\n\n===== Perform tests =====\n\n"
 
 for e in $tests
 do
@@ -53,30 +63,51 @@ do
 
 		if (($VALGRIND_EXIT_CODE == 1)); #error found
 		then
+			MEM_LEAK+=($e)
 			EXIT_STATUS=2
 			echo -e "[${RED}X${NC}]  ${e} - ${RED}Valgrind detected memory leak${NC} ${TEST_COUNTER}"
-			
-			if [ ! -z "$1" ] && [ "$1" == "github" ];
-			then
-				wget "${GET_LINK}2-${e}"
-			fi
 		else
 			echo -e "[${GREEN}Success${NC}] ${e} - ${GREEN}Valgrind detected no memory leaks${NC} ${TEST_COUNTER}"
 		fi
 	else
 		EXIT_STATUS=1
+		TEST_ERROR+=($e)
 		echo -e "[${RED}X${NC}] ${e} - ${RED}Test failed${NC} ${TEST_COUNTER}"
-		
-		if [ ! -z "$1" ] && [ "$1" == "github" ];
-		then
-			wget "${GET_LINK}1-${e}"
-		fi
-		
 		echo "Valgrind test for $e were not performed"
 		printf "\n"
 	fi
 
 	counter=$(($counter + 1))
 done
+
+if [ ! -z "$1" ] && [ "$1" == "github" ];
+then
+	URL_DIR=""
+
+	if ((${#TEST_ERROR[@]} > 0));
+	then
+		URL_DIR+="&1"
+
+		for e in $TEST_ERROR
+		do
+			PARSED_STR=${e##*/}
+			URL_DIR+="*${PARSED_STR[${#PARSED_STR[@]} - 1]}"
+		done
+	fi
+
+	if ((${#MEM_LEAK[@]} > 0));
+	then
+		URL_DIR+="&2"
+
+		for e in $MEM_LEAK
+		do
+			PARSED_STR=${e##*/}
+			URL_DIR+="*${PARSED_STR[${#PARSED_STR[@]} - 1]}"
+		done
+	fi
+	FINAL_LINK="${GET_LINK}${URL_DIR}"
+	wget --spider $FINAL_LINK
+	echo $FINAL_LINK
+fi
 
 exit $EXIT_STATUS
