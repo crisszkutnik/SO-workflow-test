@@ -1,8 +1,11 @@
-_HEADERS = func.h
+# _HEADERS_C = func.h
+_HEADERS = $(shell find ./headers -type f -iname "*.h" -exec basename {} \;)
 HEAD_DIR = ./headers
 HEADERS = $(patsubst %,$(HEAD_DIR)/%,$(_HEADERS))
 
-_OBJ = func.o 
+# _OBJ = func.o 
+_LIB_C = $(shell find ./lib -type f -iname "*.c" -exec basename {} \;)
+_OBJ = $(_LIB_C:.c=.o)
 ODIR = ./compile
 OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
 
