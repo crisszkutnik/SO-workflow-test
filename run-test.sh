@@ -106,8 +106,12 @@ then
 		done
 	fi
 	FINAL_LINK="${GET_LINK}${URL_DIR}"
-	wget --spider $FINAL_LINK
-	echo $FINAL_LINK
+
+	if ((${#URL_DIR} > 0));
+	then
+		wget --spider $FINAL_LINK
+		printf "\n\nRequest: ${FINAL_LINK}\n\n"
+	fi
 fi
 
 exit $EXIT_STATUS
