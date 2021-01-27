@@ -5,10 +5,10 @@ typedef int LEAK;
 
 int main() {
 
-	LEAK *wikileaks = malloc(LEAKS);
+  LEAK *wikileaks = malloc(LEAKS);
 
-	return 0;
+  return 0;
 
-	// TOO
-	// BAD!
+  // TOO
+  // BAD!
 }

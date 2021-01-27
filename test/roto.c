@@ -3,9 +3,9 @@
 
 int main() {
 
-	char* leak = malloc(1000);
+  char *leak = malloc(1000);
 
-	// TOO - BAD!
-	
-	return 0;
+  // TOO - BAD!
+
+  return 0;
 }
