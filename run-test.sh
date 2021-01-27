@@ -68,7 +68,7 @@ do
 	# first, run the test
 
 	TEST_COUNTER="($counter/$max)"
-	./$e *> /dev/null &
+	./$e
 	EXIT_CODE_1=$?
 
 	if (($EXIT_CODE_1 == 0));
