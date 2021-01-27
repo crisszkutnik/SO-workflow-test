@@ -13,7 +13,7 @@ jobs:
       - name: Install valgrind
         run: sudo apt-get install -y valgrind
       - name: Get data
-        run: echo ${GITHUB_SHA::8}
+        run: echo "${GITHUB_REF#refs/heads/} ${GITHUB_SHA}"
       - name: Run tests
         run: bash run-test.sh github
 
