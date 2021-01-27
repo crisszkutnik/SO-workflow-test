@@ -14,7 +14,7 @@ if (($MAKEFILE_RES != 0));
 then
 	if [ ! -z "$1" ] && [ "$1" == "github" ];
 	then
-		wget --spider "${GET_LINK}&3"
+		wget --spider "${GET_LINK}$2/$3/&3"
 	fi
 
 	exit 3
