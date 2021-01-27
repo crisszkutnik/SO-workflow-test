@@ -128,7 +128,10 @@ then
 			URL_DIR+="*${PARSED_STR[${#PARSED_STR[@]} - 1]}"
 		done
 	fi
-	FINAL_LINK="${GET_LINK}${URL_DIR}"
+
+	# $2 -> branch
+	# $3 -> commit hash
+	FINAL_LINK="${GET_LINK}$2/$3/${URL_DIR}"
 
 	if ((${#URL_DIR} > 0));
 	then
