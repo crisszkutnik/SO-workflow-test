@@ -12,6 +12,8 @@ jobs:
         run: sudo apt-get update
       - name: Install valgrind
         run: sudo apt-get install -y valgrind
+      - name: Install commons
+        run: git clone https://github.com/sisoputnfrba/so-commons-library.git && cd so-commons-library && sudo make install && cd ..
       - name: Run tests
         run: bash run-test.sh github ${GITHUB_REF#refs/heads/} ${GITHUB_SHA}
 
