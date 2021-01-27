@@ -1,13 +1,22 @@
-name: Run clang-format Linter
+name: Run valgrind and clang-formatter
 
 on: [push, pull_request]
 
 jobs:
-  run_valgrind:
+  #run_valgrind:
+  #  runs-on: ubuntu-latest
+  #  steps:
+  #    - name: Perform tests
+  #      uses: crisszkutnik/SO-valgrind-action@v1.2
+  run_tests:
     runs-on: ubuntu-latest
+    
     steps:
-      - name: Perform tests
-        uses: crisszkutnik/SO-valgrind-action@v1.2
+      - uses: actions/checkout@v2
+      - name: Install valgrind
+        run: apt-get install valgrind
+      - name: Run tests
+        run: bash run-test.sh
 
   build:
     runs-on: ubuntu-latest
