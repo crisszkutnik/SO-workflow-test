@@ -6,7 +6,9 @@ _OBJ = func.o
 ODIR = ./compile
 OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
 
-_TEST_OBJ = test1.out roto-2-FIXED.out roto.out todo-bien.out no-anda.out
+# _TEST_OBJ = test1.out roto-2-FIXED.out roto.out todo-bien.out no-anda.out
+_TEST_C := $(shell find ./test -type f -iname "*.c" -exec basename {} \;)
+_TEST_OBJ = $(_TEST_C:.c=.out)
 _TEST_OBJ_DIR = ./test/compile
 TEST_OBJ = $(patsubst %,$(_TEST_OBJ_DIR)/%,$(_TEST_OBJ))
 
