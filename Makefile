@@ -53,4 +53,4 @@ clean:
 	rm -rf ./headers/*.h.gch
 
 cleanTest:
-	rm -rf ./test/compile/*
+	rm -rf ./test/compile

@@ -2,24 +2,22 @@
 
 printf "\n\n========= Starting test run ==========\n\n"
 
-ls
-
 printf "===== Build test =====\n\n"
-make test
 
-makefile_res=$?
-echo $makefile_res
+GET_LINK="https://beto-bot.guidodipietro.repl.co/59332280-fe1d-42c9-8445-36f12ad241fd/"
+
+make test
+MAKEFILE_RES=$?
+
+# 4 error code is that it did not compile
+if (($MAKEFILE_RES != 0));
+then
+	wget "${GET_LINK}4" 
+fi
 
 printf "\n"
 
 tests=$(find ./test/compile/ -type f -name "*.out")
-
-# create valgrind_logs folder
-
-if [ ! -d valgrind-logs ]; 
-then
-	mkdir valgrind-logs
-fi
 
 valgrind_args="--leak-check=full --show-leak-kinds=all --track-origins=yes --verbose --error-exitcode=1"
 counter=1
@@ -34,7 +32,6 @@ EXIT_STATUS=0
 # 0 - No error
 # 1 - Test failed
 # 2 - Mem leak
-
 
 for e in $tests
 do
@@ -70,5 +67,10 @@ do
 
 	counter=$(($counter + 1))
 done
+
+if [ ! -z "$1" ] && [ "$1" == "github" ];
+then
+	wget "${GET_LINK}${EXIT_STATUS}"
+fi
 
 exit $EXIT_STATUS
