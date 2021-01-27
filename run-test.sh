@@ -14,6 +14,8 @@ printf "\n"
 
 tests=$(find ./test/compile/ -type f -name "*.out")
 
+# create valgrind_logs folder
+
 if [ ! -d valgrind-logs ]; 
 then
 	mkdir valgrind-logs
@@ -32,6 +34,7 @@ EXIT_STATUS=0
 # 0 - No error
 # 1 - Test failed
 # 2 - Mem leak
+
 
 for e in $tests
 do

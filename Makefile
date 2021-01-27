@@ -15,29 +15,32 @@ LDIR = ./lib
 CC = gcc
 FLAGS = -c -o
 
-build: $(OBJ) $(HEADERS) makeFolder
+all: makeFolder build
+
+build: $(OBJ) $(HEADERS)
 	$(CC) main.c $(OBJ) $(HEADERS)
 
 # -------------------
 # Test definitions
 # -------------------
 
-test: $(TEST_OBJ)
+test: makeFolder makeTestFolder $(TEST_OBJ)
 
 ./test/compile/%.out: ./test/%.c $(HEADERS) $(OBJ)
 	$(CC) -o $@ $< $(OBJ) $(HEADERS)
+
+makeTestFolder:
+	@if [ ! -d ./test/compile ]; then \
+		mkdir ./test/compile; \
+	fi
 
 # -------------------
 # End test definitions
 # -------------------
 
 makeFolder:
-		@echo "\n\n- CREANDO CARPETA compile"
 		@if [ ! -d compile ]; then \
 			mkdir compile; \
-			echo -  CARPETA CREADA""; \
-		else \
-			echo "-  CARPETA COMPILE EXISTENTE"; \
 		fi
 
 ./compile/%.o: $(LDIR)/%.c $(HEADERS)
@@ -46,7 +49,7 @@ makeFolder:
 .PHONY: clean cleanTest
 
 clean:
-	rm -rf ./compile/*
+	rm -rf compile
 	rm -rf ./headers/*.h.gch
 
 cleanTest:

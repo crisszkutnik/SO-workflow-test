@@ -3,6 +3,7 @@ compile/*
 headers/*.h.gch
 test/compile/*.o
 test/compile/*.log
+test/compile/*.out
 valgrind_logs
 valgrind_logs/*.log
 
@@ -10,3 +11,4 @@ valgrind_logs/*.log
 
 *.o
 *.log
+*.out
