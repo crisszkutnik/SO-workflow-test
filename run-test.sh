@@ -12,7 +12,7 @@ MAKEFILE_RES=$?
 # 4 error code is that it did not compile
 if (($MAKEFILE_RES != 0));
 then
-	wget "${GET_LINK}4" 
+	wget "${GET_LINK}3" 
 fi
 
 printf "\n"
@@ -55,22 +55,28 @@ do
 		then
 			EXIT_STATUS=2
 			echo -e "[${RED}X${NC}]  ${e} - ${RED}Valgrind detected memory leak${NC} ${TEST_COUNTER}"
+			
+			if [ ! -z "$1" ] && [ "$1" == "github" ];
+			then
+				wget "${GET_LINK}2-${e}"
+			fi
 		else
 			echo -e "[${GREEN}Success${NC}] ${e} - ${GREEN}Valgrind detected no memory leaks${NC} ${TEST_COUNTER}"
 		fi
 	else
 		EXIT_STATUS=1
 		echo -e "[${RED}X${NC}] ${e} - ${RED}Test failed${NC} ${TEST_COUNTER}"
+		
+		if [ ! -z "$1" ] && [ "$1" == "github" ];
+		then
+			wget "${GET_LINK}1-${e}"
+		fi
+		
 		echo "Valgrind test for $e were not performed"
 		printf "\n"
 	fi
 
 	counter=$(($counter + 1))
 done
-
-if [ ! -z "$1" ] && [ "$1" == "github" ];
-then
-	wget "${GET_LINK}${EXIT_STATUS}"
-fi
 
 exit $EXIT_STATUS
