@@ -4,6 +4,9 @@ AlignAfterOpenBracket: true
 AlignTrailingComments: true
 # Alinea comentarios
 
+BreakBeforeBraces: Attach
+# Como dice en stdutnso.md
+
 DerivePointerAlignment: false
 # No "adivinar" si se usa mas char* a o char *a
 
