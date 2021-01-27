@@ -7,8 +7,9 @@ int main() {
 
   LEAK *wikileaks = malloc(LEAKS);
 
+  free(wikileaks);
+
   return 0;
 
-  // TOO
-  // BAD!
+  // fixed!!!
 }
