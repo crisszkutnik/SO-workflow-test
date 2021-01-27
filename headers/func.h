@@ -1,3 +1,3 @@
-void someFunc(int *);
+void someFunc(int*);
 void printSomething();
-void doRandomStuff(int *);
+void doRandomStuff(int*);
