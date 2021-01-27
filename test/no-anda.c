@@ -4,8 +4,7 @@ typedef char wiki;
 
 int main() {
 
-	wiki *leaks = malloc(1);
+  wiki *leaks = malloc(1);
 
-	return 0;
-
+  return 0;
 }
