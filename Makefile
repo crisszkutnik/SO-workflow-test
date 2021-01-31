@@ -19,6 +19,7 @@ LDIR = ./lib
 
 CC = gcc
 FLAGS = -c -o
+LINK = -lpthread -lcommons
 
 all: makeFolder build
 
@@ -32,7 +33,7 @@ build: $(OBJ) $(HEADERS)
 test: makeFolder makeTestFolder $(TEST_OBJ)
 
 ./test/compile/%.out: ./test/%.c $(HEADERS) $(OBJ)
-	$(CC) -o $@ $< $(OBJ) $(HEADERS)
+	$(CC) -o $@ $< $(OBJ) $(HEADERS) $(LINK)
 
 makeTestFolder:
 	@if [ ! -d ./test/compile ]; then \
@@ -49,7 +50,7 @@ makeFolder:
 		fi
 
 ./compile/%.o: $(LDIR)/%.c $(HEADERS)
-	$(CC) $(FLAGS) $@ $< 
+	$(CC) $(FLAGS) $@ $< $(LINK)
 
 .PHONY: clean cleanTest
 
