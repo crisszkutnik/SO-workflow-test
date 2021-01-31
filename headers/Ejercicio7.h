@@ -17,24 +17,24 @@
 #ifndef EJERCICIO7_H_
 #define EJERCICIO7_H_
 
+#include <commons/collections/queue.h>
+#include <pthread.h>
+#include <semaphore.h>
+#include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <pthread.h>
 #include <unistd.h>
-#include <stdint.h>
-#include <semaphore.h>
-#include <commons/collections/queue.h>
 
 #define TAMAN_COLA 10
 
-void  trabajar_PC(void*);
-void  procesar_cola_impresion(void*);
-void  mandar_a_imprimir(t_queue*, const char*);
+void trabajar_PC(void*);
+void procesar_cola_impresion(void*);
+void mandar_a_imprimir(t_queue*, const char*);
 char* crear_data();
 
 typedef struct {
-	const char* pc; //PC que hizo el pedido de impresion
-	char* data; 	//Datos a imprimir
+    const char* pc; // PC que hizo el pedido de impresion
+    char* data;     // Datos a imprimir
 } t_print_job;
 void destroy_t_print_job(void*);
 
