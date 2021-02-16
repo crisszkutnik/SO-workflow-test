@@ -2,7 +2,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void someFunc(int* a) { *a = 10; }
+void someFunc(int* a) {
+    *a = 10;
+}
 
 void doRandomStuff(int* num) {
     int* ptr = malloc(sizeof(int));
@@ -13,4 +15,6 @@ void doRandomStuff(int* num) {
     // No you didn't! ha!
 }
 
-void printSomething() { printf("Hello fellow reader"); }
+void printSomething() {
+    printf("Hello fellow reader");
+}

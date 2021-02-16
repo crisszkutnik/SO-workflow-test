@@ -50,7 +50,7 @@ void trabajar_PC(void* args) {
     //										   para que todos los hilos la puedan
     //usar. 										   Antes se estaba pasando como parámetro a esta func
     char* nombre = (char*)args; // Un mejor argumento!
-    for (int i = 0; i < 10; i++) {
+    for(int i = 0; i < 10; i++) {
         mandar_a_imprimir(job_queue, nombre);
         usleep((unsigned int)1); // Ni idea por qué pero usan (unsigned int)
                                  // para esto
@@ -74,7 +74,7 @@ void procesar_cola_impresion(void* args) {
     // t_queue * job_queue = (t_queue*) args; // Lo mismo que trabajar()
     t_print_job* job = NULL; // NO UNINITIALIZED POINTERS!! aunque da igual
 
-    for (;;) { // sexy
+    for(;;) { // sexy
         job = (t_print_job*)queue_synced_pop(job_queue);
         printf("Imprimiendo trabajo de PC \"%s\", "
                "datos a imprimir: [%s]\n",
@@ -89,7 +89,7 @@ char* crear_data() {
         "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 
     char* out = malloc(10);
-    for (int i = 0; i < 9; i++)
+    for(int i = 0; i < 9; i++)
         out[i] = alphanum[rand() % (sizeof(alphanum) - 1)];
     out[9] = '\0';
 
