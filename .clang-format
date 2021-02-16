@@ -1,17 +1,40 @@
-AlignAfterOpenBracket: true
+# No se muy bien que hace esto pero hace que queden bien los arrays y los enums
+ColumnLimit: 0
+
 # Llamadas a funciones con muchos argumentos por ej
+AlignAfterOpenBracket: true
 
-AlignTrailingComments: true
 # Alinea comentarios
+AlignTrailingComments: true
 
-BreakBeforeBraces: Attach
-# Como dice en stdutnso.md
+# Cambiar los braces para que queden lindos
+BreakBeforeBraces: Custom
+BraceWrapping:
+    AfterEnum: false
+    AfterStruct: false
+    SplitEmptyFunction: false
+Cpp11BracedListStyle: false
 
-DerivePointerAlignment: false
 # No "adivinar" si se usa mas char* a o char *a
+DerivePointerAlignment: false
 
-IndentWidth: 4
 # 4 espacios
+IndentWidth: 4
 
-PointerAlignment: Left
 # Siempre usar char* a
+PointerAlignment: Left
+
+# Desativar cosas en 1 linea
+AllowShortFunctionsOnASingleLine: false
+AllowShortBlocksOnASingleLine: false
+
+# Cosas varias de espacios
+SpaceBeforeParens: Never
+SpaceBeforeSquareBrackets: false
+SpaceBeforeRangeBasedForLoopColon: false
+SpaceInEmptyParentheses: false
+SpacesInCStyleCastParentheses: false
+SpacesInConditionalStatement: false
+SpacesInContainerLiterals: false
+SpacesInSquareBrackets: false
+SpacesInParentheses: false
