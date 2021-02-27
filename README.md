@@ -11,6 +11,7 @@ Probá, por ejemplo, con algo así:
 
 ```c
 // guardar como cualquier_cosa.c en ./test
+#include <stdlib.h>
 
 int main() {
       char* cadena = malloc(5);
