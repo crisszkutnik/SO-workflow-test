@@ -10,6 +10,7 @@ void doRandomStuff(int* num) {
     int* ptr = malloc(sizeof(int));
     *ptr = *num + 50;
     *num = *ptr - 10;
+    num = aaaa;
     // free(ptr);
     // Wow! I solved the memory leak!
     // No you didn't! ha!
